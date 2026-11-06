@@ -1,8 +1,15 @@
 import { Hint } from "../../types/types";
-import { notImplemented } from "./generateSecret";
+import { createDigitValidator } from "./createDigitValidator";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function evaluateGuess(secret: string, guess: string) {
-  notImplemented();
-  return {} as Hint;
+export function evaluateGuess(secret: string, guess: string): Hint {
+  const secretArr = Array.from(secret);
+  const guessArr = Array.from(guess);
+  const bulls = guessArr.filter((char, i) => char === secretArr[i]);
+
+  const isInSecret = createDigitValidator(secret);
+
+  const cows = guessArr.filter(
+    (char, i) => isInSecret(char) && char !== secretArr[i],
+  );
+  return { bulls: bulls.length, cows: cows.length };
 }
