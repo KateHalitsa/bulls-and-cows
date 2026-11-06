@@ -1,7 +1,25 @@
-import { notImplemented } from "./generateSecret";
+import { createDigitValidator } from "./createDigitValidator";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function isValidGuess(guess: string, length: number, base: number) {
-  notImplemented();
+  if (guess.length != length) {
+    return false;
+  }
+
+  const availableSymbols = "0123456789ABCDEF";
+  const notation = availableSymbols.slice(0, base);
+  const isDigitValid = createDigitValidator(notation);
+
+  const allCharsAllowed = Array.from(guess).every(isDigitValid);
+
+  if (!allCharsAllowed) {
+    return false;
+  }
+
+  const setOfGuess = new Set(guess);
+
+  if (setOfGuess.size !== guess.length) {
+    return false;
+  }
+
   return true;
 }
