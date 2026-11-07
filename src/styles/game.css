@@ -1,0 +1,60 @@
+.attempt-section{
+    display: flex;
+    flex-direction: column;
+}
+.attempt{
+    display: flex;
+}
+.guess-number {
+  border: 2px solid #ccc;
+  width: 50px;
+  
+}
+.guess-number.invalid {
+    border-color: red;
+    background-color: #ffe6e6;
+  }
+
+.guess-error {
+  color: red;
+  font-size: 14px;
+}
+
+.attempt-result-section {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.result-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.bull {
+  background-color: rgb(255, 128, 0);
+}
+
+.cow {
+  background-color: pink;
+}
+.attempt-result-section {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.result-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.bull {
+  background-color: orange;
+}
+
+.cow {
+  background-color: pink;
+}
