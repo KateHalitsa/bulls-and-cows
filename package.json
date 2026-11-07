@@ -1,9 +1,11 @@
-{ 
+{
   "name": "bulls-and-cows",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "build:watch": "tsc --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

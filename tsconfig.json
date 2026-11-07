@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -12,6 +11,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/components/algorithms"],
+  "include": ["src/**/*", "src/components/algorithms"],
   "exclude": ["node_modules", "dist", "tests"]
 }
