@@ -9,6 +9,7 @@ const systems = [
 let selectedBase = 10;
 
 export function renderSettings() {
+  document.querySelector(".modal")?.remove();
   const panel = document.createElement("div");
   panel.classList.add("setting-panel");
 

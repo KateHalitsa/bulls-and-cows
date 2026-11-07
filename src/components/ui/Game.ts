@@ -4,7 +4,6 @@ import { createAttempt } from "./Attempt";
 
 export function renderGame(selectedBase: number, selectedLength: number): void {
   document.querySelector(".setting-panel")?.remove();
-
   const secret = generateSecret(selectedLength, selectedBase);
   const gameState: GameState = { secret: secret, guesses: 0 };
   const main = document.createElement("main");
@@ -13,10 +12,17 @@ export function renderGame(selectedBase: number, selectedLength: number): void {
   const title = document.createElement("h1");
   title.textContent = "Bulls and Cows";
 
-  const firstAttempt = createAttempt(selectedBase, selectedLength, gameState);
+  const startTime = Date.now();
+  const firstAttempt = createAttempt(
+    selectedBase,
+    selectedLength,
+    gameState,
+    startTime,
+  );
 
   const attemptSection = document.createElement("div");
   attemptSection.classList.add("attempt-section");
+
   attemptSection.append(firstAttempt);
 
   main.append(title, attemptSection);

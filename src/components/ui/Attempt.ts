@@ -1,13 +1,15 @@
-import { GameState, maxString } from "../../types/types";
+import { GameState, maxString, GameResult } from "../../types/types";
 import { createDigitValidator } from "../algorithms/createDigitValidator";
 import { evaluateGuess } from "../algorithms/evaluateGuess";
 import { isValidGuess } from "../algorithms/isValidGuess";
+import { saveResult } from "../game/storage";
 import { createResultTable } from "./ResultTable";
 
 export function createAttempt(
   base: number,
   length: number,
   gameState: GameState,
+  startTime: number,
 ): HTMLDivElement {
   const attempt = document.createElement("div");
   attempt.classList.add("attempt");
@@ -29,8 +31,6 @@ export function createAttempt(
 
   const allowedChars = maxString.slice(0, base);
   const isDigitValid = createDigitValidator(allowedChars);
-
-  //console.log(gameState.secret);
 
   for (let i = 0; i < length; i++) {
     const guessNumber = document.createElement("input");
@@ -79,13 +79,22 @@ export function createAttempt(
     renderAttemptResult(attemptResultSection, result.bulls, result.cows);
 
     if (result.bulls === length) {
+      const gameResult: GameResult = {
+        id: crypto.randomUUID(),
+        guesses: gameState.guesses,
+        duration: Date.now() - startTime,
+        base: base,
+        length: length,
+        date: new Date().toISOString(),
+      };
+      saveResult(gameResult);
       createResultTable();
       return;
     }
 
     document
       .querySelector(".attempt-section")
-      ?.append(createAttempt(base, length, gameState));
+      ?.append(createAttempt(base, length, gameState, startTime));
   });
   attemptResultSection.append(checkButton);
   attempt.append(guessSection, errorMessage, attemptResultSection);

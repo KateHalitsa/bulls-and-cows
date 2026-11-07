@@ -16,7 +16,6 @@ body {
   position: relative;
   background-image: url(/public/images/фон.jpg);
   background-size: cover;
-  background-position: calc(50% + 30px) center;
   background-repeat: no-repeat;
   overflow: hidden;
 }
