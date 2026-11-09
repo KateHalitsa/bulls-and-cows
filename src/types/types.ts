@@ -13,5 +13,7 @@ export type GameResult = {
 export interface GameState {
   secret: string;
   guesses: number;
+  usedGuesses: Set<string>;
+  finished: boolean;
 }
 export const maxString = "0123456789abcdef";
