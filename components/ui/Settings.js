@@ -6,6 +6,7 @@ const systems = [
     { label: "Hexadecimal (16)", value: 16 },
 ];
 let selectedBase = 10;
+let selectedLength = 4;
 export function renderSettings() {
     document.querySelector(".modal")?.remove();
     const panel = document.createElement("div");
@@ -52,12 +53,13 @@ export function renderSettings() {
         else {
             slider.hidden = false;
             sliderValue.hidden = false;
+            slider.value = `${selectedLength}`;
         }
         systemSelection.querySelector(".selected")?.classList.remove("selected");
         event.target.classList.add("selected");
     });
     slider.addEventListener("input", () => {
-        const selectedLength = Number(slider.value);
+        selectedLength = Number(slider.value);
         sliderValue.textContent = `Secret length: ${selectedLength}`;
     });
     definesystemSelection.append(systemSelection);
