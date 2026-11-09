@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'SmeshFont';
+  src: url('../../public/font/smeshariki2007.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,4 +24,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  font-family:"SmeshFont" , sans-serif;
+  font-size: 20px;
+}
+button{
+  font-family:"SmeshFont" , sans-serif;
+  font-size: 20px;
 }

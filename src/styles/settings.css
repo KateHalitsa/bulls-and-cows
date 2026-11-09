@@ -1,16 +1,18 @@
 .setting-panel {
-  max-width: 500px;
+  max-width: 800px;
   width: 100%;
   min-height: 300px;
-  margin: auto;
-  margin-top: 20%;
   background-color: #fdb515;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 30%;
+  gap:20px;
+  border-radius: 10px;
 }
 .define-length,
 .define-system-selection {
@@ -19,6 +21,8 @@
 .system-selection {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
+  margin: 10px;
 }
 
 .system-selection__button {
@@ -31,4 +35,10 @@
 .system-selection__button.selected {
   background-color: #333;
   color: white;
+}
+.start-game-btn,.new-game-btn{
+    width: 150px;
+    height: 30px;
+    border-radius: 20px;
+    margin-left:auto ;
 }

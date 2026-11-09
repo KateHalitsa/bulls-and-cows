@@ -37,7 +37,7 @@ export function createResultTable(): void {
     const values = [
       String(index + 1),
       String(res.guesses),
-      `${Math.floor(res.duration / 1000)} sec`,
+      `${Math.floor(res.duration / 60000)} min ${Math.floor((res.duration % 60000) / 1000)} sec`,
       String(res.base),
       String(res.length),
     ];

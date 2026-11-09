@@ -5,13 +5,25 @@ import { createAttempt } from "./Attempt";
 export function renderGame(selectedBase: number, selectedLength: number): void {
   document.querySelector(".setting-panel")?.remove();
   const secret = generateSecret(selectedLength, selectedBase);
-  const gameState: GameState = { secret: secret, guesses: 0 };
+  const gameState: GameState = {
+    secret: secret,
+    guesses: 0,
+    usedGuesses: new Set(),
+    finished: false,
+  };
   const main = document.createElement("main");
   main.classList.add("game");
 
   const title = document.createElement("h1");
-  title.textContent = "Bulls and Cows";
+  const spanBulls = document.createElement("span");
+  spanBulls.textContent = "Bulls";
+  spanBulls.className = "accent-bulls";
 
+  const and = document.createTextNode(" and");
+  const spanCows = document.createElement("span");
+  spanCows.textContent = " Cows";
+  spanCows.className = "accent-cows";
+  title.append(spanBulls, and, spanCows);
   const startTime = Date.now();
   const firstAttempt = createAttempt(
     selectedBase,

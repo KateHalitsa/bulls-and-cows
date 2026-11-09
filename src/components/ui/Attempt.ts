@@ -32,6 +32,8 @@ export function createAttempt(
   const allowedChars = maxString.slice(0, base);
   const isDigitValid = createDigitValidator(allowedChars);
 
+  attempt.style.width = 135 * length + "px";
+
   for (let i = 0; i < length; i++) {
     const guessNumber = document.createElement("input");
 
@@ -71,6 +73,13 @@ export function createAttempt(
       errorMessage.hidden = false;
       return;
     }
+    if (gameState.usedGuesses.has(guess)) {
+      errorMessage.textContent = "You have already tried this number.";
+      errorMessage.hidden = false;
+      return;
+    }
+
+    gameState.usedGuesses.add(guess);
 
     errorMessage.hidden = true;
 
@@ -79,6 +88,8 @@ export function createAttempt(
     renderAttemptResult(attemptResultSection, result.bulls, result.cows);
 
     if (result.bulls === length) {
+      gameState.finished = true;
+
       const gameResult: GameResult = {
         id: crypto.randomUUID(),
         guesses: gameState.guesses,
@@ -97,7 +108,7 @@ export function createAttempt(
       ?.append(createAttempt(base, length, gameState, startTime));
   });
   attemptResultSection.append(checkButton);
-  attempt.append(guessSection, errorMessage, attemptResultSection);
+  attempt.append(guessSection, attemptResultSection, errorMessage);
   return attempt;
 }
 function createDots(count: number, className: string): HTMLSpanElement[] {
