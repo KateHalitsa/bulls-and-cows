@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "SmeshFont";
+  src: url("../../public/font/smeshariki2007.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  background-image: url(/public/images/фон.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: "SmeshFont", sans-serif;
+  font-size: 20px;
+}
+button {
+  font-family: "SmeshFont", sans-serif;
+  font-size: 20px;
+}
